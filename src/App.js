@@ -1,7 +1,12 @@
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 
-const App: () => React$Node = () => {
-  return <></>;
+import MainStack from './stacks/MainStack';
+
+export default () => {
+  return (
+    <NavigationContainer>
+      <MainStack />
+    </NavigationContainer>
+  );
 };
-
-export default App;
