@@ -1,11 +1,11 @@
 import React from 'react';
-import {Text} from 'react-native';
 import {Container} from './styles';
+import CustomAppbar from '../../components/CustomAppbar';
 
 export default () => {
   return (
     <Container>
-      <Text>Home</Text>
+      <CustomAppbar />
     </Container>
   );
 };

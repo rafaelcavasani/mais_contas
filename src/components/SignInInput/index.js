@@ -1,13 +1,14 @@
 import React from 'react';
 import {InputArea, Input} from './styles';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default ({Icon, placeHolder, value, onChangeText, password}) => {
+export default ({icon, placeHolder, value, onChangeText, password}) => {
   return (
     <InputArea>
-      {/* <Icon /> */}
+      {icon && <Icon name={icon} size={18} color="#21695a" />}
       <Input
         placeholder={placeHolder}
-        placeholderTextColor="#268596"
+        placeholderTextColor="#21695a"
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={password}

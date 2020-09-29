@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import {Alert} from 'react-native';
-import {useNavigation, Image} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {Container, InputArea, CustomButton, CustomButtonText} from './styles';
 import SignInInput from '../../components/SignInInput';
 import api from '../../services/api';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default () => {
   const navigation = useNavigation();
@@ -16,7 +15,8 @@ export default () => {
     if (usernameField !== '' && passwordField !== '') {
       try {
         let json = await api.signIn(usernameField, passwordField);
-        if (json) {
+        console.log(json);
+        if (json.username) {
           navigation.reset({
             routes: [{name: 'MainTab'}],
           });
@@ -36,21 +36,20 @@ export default () => {
 
   return (
     <Container>
-      {/* <Image source={require('../../assets/logo.png')} /> */}
       <InputArea>
         <SignInInput
-          icon={<Icon name="home" size={18} color="#999" />}
-          placeholder="Digite seu nomde de usuário"
+          icon="user-circle"
+          placeHolder="Digite seu nome de de usuário"
           value={usernameField}
           onChangeText={(t) => setUsernameField(t)}
         />
 
         <SignInInput
-          icon={<Icon name="home" size={18} color="#999" />}
-          placeholder="Digite sua senha"
+          icon="unlock-alt"
+          placeHolder="Digite sua senha"
           value={passwordField}
           onChangeText={(t) => setPasswordField(t)}
-          password={true}
+          password
         />
 
         <CustomButton onPress={handleSignClick}>
