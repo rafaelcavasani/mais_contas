@@ -1,9 +1,10 @@
 import React from 'react';
-import {} from 'react-native';
+import {Container, TextTitle} from './styles';
 
-export default () => {
+export default ({title}) => {
   return (
-
-
+    <Container>
+      <TextTitle>{title}</TextTitle>
+    </Container>
   );
 };

@@ -39,7 +39,7 @@ export default () => {
       <InputArea>
         <SignInInput
           icon="user-circle"
-          placeHolder="Digite seu nome de de usuário"
+          placeHolder="Digite seu nome de usuário"
           value={usernameField}
           onChangeText={(t) => setUsernameField(t)}
         />
@@ -53,7 +53,7 @@ export default () => {
         />
 
         <CustomButton onPress={handleSignClick}>
-          <CustomButtonText>LOGIN</CustomButtonText>
+          <CustomButtonText>ENTRAR</CustomButtonText>
         </CustomButton>
       </InputArea>
     </Container>
