@@ -11,8 +11,31 @@ export default {
       body: JSON.stringify({username, password}),
     });
     const json = await response.json();
+    console.log(json);
     return json;
   },
-  getBalance: async () => {},
-  getTransactions: async () => {},
+
+  getBalance: async () => {
+    const response = await fetch(`${BASE_API}/balance`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+    const json = await response.json();
+    return json;
+  },
+
+  getTransactions: async () => {
+    const response = await fetch(`${BASE_API}/transactions`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+    const json = await response.json();
+    return json;
+  },
 };

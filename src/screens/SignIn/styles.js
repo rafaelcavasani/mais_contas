@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
@@ -6,6 +5,13 @@ export const Container = styled.SafeAreaView`
   flex: 1;
   justify-content: center;
   align-items: center;
+`;
+
+export const SignInImage = styled.View`
+  padding: 0 50px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
 `;
 
 export const InputArea = styled.View`

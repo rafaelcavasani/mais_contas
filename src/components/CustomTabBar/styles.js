@@ -20,11 +20,6 @@ export const TabItemCenter = styled.TouchableOpacity`
   border: 8px solid #00a884;
   margin-top: -25px;
 `;
-export const AvatarIcon = styled.Image`
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
-`;
 
 export const TextItem = styled.Text`
   color: #fff;

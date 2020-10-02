@@ -2,7 +2,13 @@ import React from 'react';
 import {InputArea, Input} from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default ({icon, placeHolder, value, onChangeText, password}) => {
+export default function SignInInput({
+  icon,
+  placeHolder,
+  value,
+  onChangeText,
+  password,
+}) {
   return (
     <InputArea>
       {icon && <Icon name={icon} size={18} color="#21695a" />}
@@ -15,4 +21,4 @@ export default ({icon, placeHolder, value, onChangeText, password}) => {
       />
     </InputArea>
   );
-};
+}

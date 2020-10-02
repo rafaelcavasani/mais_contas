@@ -1,11 +1,17 @@
 import React, {useState} from 'react';
-import {Alert} from 'react-native';
+import {Alert, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {Container, InputArea, CustomButton, CustomButtonText} from './styles';
+import {
+  Container,
+  InputArea,
+  CustomButton,
+  CustomButtonText,
+  SignInImage,
+} from './styles';
 import SignInInput from '../../components/SignInInput';
 import api from '../../services/api';
 
-export default () => {
+export default function SigIn() {
   const navigation = useNavigation();
 
   const [usernameField, setUsernameField] = useState('');
@@ -14,14 +20,14 @@ export default () => {
   const handleSignClick = async () => {
     if (usernameField !== '' && passwordField !== '') {
       try {
-        let json = await api.signIn(usernameField, passwordField);
-        console.log(json);
-        if (json.username) {
+        const data = await api.signIn(usernameField, passwordField);
+        console.log(data);
+        if (data.username) {
           navigation.reset({
             routes: [{name: 'MainTab'}],
           });
         } else {
-          Alert.alert('Erro', 'E-mail e/ou senha errados!');
+          Alert.alert('Erro', 'E-mail e/ou senha inválidos!');
         }
       } catch (exception) {
         Alert.alert(
@@ -37,6 +43,9 @@ export default () => {
   return (
     <Container>
       <InputArea>
+        <SignInImage>
+          <Image source={require('../../assets/logo.png')} />
+        </SignInImage>
         <SignInInput
           icon="user-circle"
           placeHolder="Digite seu nome de usuário"
@@ -58,4 +67,4 @@ export default () => {
       </InputArea>
     </Container>
   );
-};
+}
