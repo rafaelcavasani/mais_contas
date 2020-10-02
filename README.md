@@ -43,8 +43,8 @@ O usuário poderá filtrar se deseja visualizar todas as transações:
 
 Visualizar somente as entradas de valores:
 
-![entradas](/src/assets/entradas.png?raw=false)
+![entradas](/src/assets/entrada.png?raw=false)
 
 Ou a saída de valores:
 
-![saidas](/src/assets/saidas.png?raw=false)
+![saidas](/src/assets/saida.png?raw=false)
