@@ -23,28 +23,28 @@ Os arquivos foram divididos nas pastas:
 
 O app possui uma tela de login, que busca em uma api com dados mockados e não verifica autenticação.
 
-![Layout 1](/src/assets/images/login.png?raw=false)
+![login](/src/assets/images/login.png?raw=false)
 
 ### Home
 
 Página principal somente com mensagem de boas vindas ao usuário.
 
-![Layout 1](/assets/images/home.png?raw=false)
+![home](/assets/images/home.png?raw=false)
 
 ### Transações
 
 Página de consulta as transações do usuário.
 
-![Layout 1](/src/assets/images/transacoes.png?raw=false)
+![transacoes](/src/assets/images/transacoes.png?raw=false)
 
 O usuário poderá filtrar se deseja visualizar todas as transações:
 
-![Layout 1](/src/assets/images/tudo.png?raw=false)
+![todas_transacoes](/src/assets/images/tudo.png?raw=false)
 
 Visualizar somente as entradas de valores:
 
-![Layout 1](/src/assets/images/entradas.png?raw=false)
+![entradas](/src/assets/images/entradas.png?raw=false)
 
 Ou a saída de valores:
 
-![Layout 1](/src/assets/images/saidas.png?raw=false)
+![saidas](/src/assets/images/saidas.png?raw=false)
