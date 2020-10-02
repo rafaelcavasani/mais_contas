@@ -1,15 +1,20 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
-  background-color: #f2f2f2;
+  background-color: #fff;
   flex: 1;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 56px;
+`;
+
+export const ScrollViewArea = styled.ScrollView`
+  padding: 0 10px;
+  margin-top: 30px;
 `;
 
 export const BalanceView = styled.View`
-  width: 70%;
+  width: 90%;
 `;
 
 export const BalanceText = styled.Text`
@@ -65,7 +70,9 @@ export const TransactionItem = styled.View`
   justify-content: space-between;
   padding: 5px;
 `;
-export const TransactionIcon = styled.View``;
+export const TransactionIcon = styled.View`
+  padding: 5px;
+`;
 export const TransactionTexts = styled.View``;
 export const TransactionTitle = styled.Text`
   font-size: 18px;
@@ -78,7 +85,9 @@ export const TransactionNumbers = styled.View``;
 export const TransactionValue = styled.Text`
   font-size: 18px;
   font-weight: bold;
+  text-align: right;
 `;
 export const TransactionDate = styled.Text`
   font-size: 13px;
+  text-align: right;
 `;

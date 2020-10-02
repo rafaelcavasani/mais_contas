@@ -9,6 +9,7 @@ export const Container = styled.View`
   top: 0;
   left: 0;
   display: flex;
+  z-index: 999;
 `;
 
 export const TextTitle = styled.Text`

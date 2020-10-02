@@ -11,7 +11,6 @@ export default {
       body: JSON.stringify({username, password}),
     });
     const json = await response.json();
-    console.log(json);
     return json;
   },
 

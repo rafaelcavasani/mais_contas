@@ -21,7 +21,6 @@ export default function SigIn() {
     if (usernameField !== '' && passwordField !== '') {
       try {
         const data = await api.signIn(usernameField, passwordField);
-        console.log(data);
         if (data.username) {
           navigation.reset({
             routes: [{name: 'MainTab'}],

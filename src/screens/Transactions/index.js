@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {Alert, TouchableHighlight} from 'react-native';
+import {Alert, TouchableHighlight, Image, StyleSheet} from 'react-native';
 import {
   Container,
+  ScrollViewArea,
   BalanceView,
   BalanceText,
   BalanceValueText,
@@ -9,6 +10,7 @@ import {
   TransactionsView,
   TransactionsMenu,
   ButtonMenu,
+  TransactionIcon,
   TransactionItems,
   TransactionTexts,
   TransactionNumbers,
@@ -41,6 +43,12 @@ export default function Transactions() {
   const negativeStyle = {
     color: '#bf2828',
   };
+  const borderStyle = StyleSheet.create({
+    border: {
+      borderBottomColor: '#ddd',
+      borderBottomWidth: 1,
+    },
+  });
 
   function currencyFormat(value) {
     let result = value.toFixed(2);
@@ -103,81 +111,93 @@ export default function Transactions() {
       ) : (
         <>
           <CustomAppbar title="Transações" />
-          <BalanceView>
-            <BalanceText>Saldo Disponível</BalanceText>
-            <BalanceValueText>R$ {balance}</BalanceValueText>
-            <BalanceDescriptionText>
-              Esse é o valor de cashback, depósitos, pagamentos e transferências
-              recebidas.
-            </BalanceDescriptionText>
-          </BalanceView>
+          <ScrollViewArea>
+            <BalanceView>
+              <BalanceText>Saldo Disponível</BalanceText>
+              <BalanceValueText>R$ {balance}</BalanceValueText>
+              <BalanceDescriptionText>
+                Esse é o valor de cashback, depósitos, pagamentos e
+                transferências recebidas.
+              </BalanceDescriptionText>
+            </BalanceView>
 
-          <TransactionsView>
-            <TransactionsMenu>
-              <TouchableHighlight
-                onPress={() => handlerTransctionAction(0)}
-                underlayColor="white">
-                <ButtonMenu
-                  style={transactionAction === 0 ? activeStyle : normalStyle}>
-                  Tudo
-                </ButtonMenu>
-              </TouchableHighlight>
+            <TransactionsView>
+              <TransactionsMenu>
+                <TouchableHighlight
+                  onPress={() => handlerTransctionAction(0)}
+                  underlayColor="white">
+                  <ButtonMenu
+                    style={transactionAction === 0 ? activeStyle : normalStyle}>
+                    Tudo
+                  </ButtonMenu>
+                </TouchableHighlight>
 
-              <TouchableHighlight
-                onPress={() => handlerTransctionAction(1)}
-                underlayColor="white">
-                <ButtonMenu
-                  style={transactionAction === 1 ? activeStyle : normalStyle}>
-                  Entrada
-                </ButtonMenu>
-              </TouchableHighlight>
+                <TouchableHighlight
+                  onPress={() => handlerTransctionAction(1)}
+                  underlayColor="white">
+                  <ButtonMenu
+                    style={transactionAction === 1 ? activeStyle : normalStyle}>
+                    Entrada
+                  </ButtonMenu>
+                </TouchableHighlight>
 
-              <TouchableHighlight
-                onPress={() => handlerTransctionAction(2)}
-                underlayColor="white">
-                <ButtonMenu
-                  style={transactionAction === 2 ? activeStyle : normalStyle}>
-                  Saída
-                </ButtonMenu>
-              </TouchableHighlight>
-            </TransactionsMenu>
-            <TransactionItems>
-              {filteredTransactions && filteredTransactions.length > 0 ? (
-                filteredTransactions.map((element, index) => (
-                  <TransactionItem key={index}>
-                    <TransactionTexts>
-                      <TransactionTitle>
-                        {element.tipoTransacao}
-                      </TransactionTitle>
-                      <TransactionDescription>
-                        {element.descricao}
-                      </TransactionDescription>
-                    </TransactionTexts>
+                <TouchableHighlight
+                  onPress={() => handlerTransctionAction(2)}
+                  underlayColor="white">
+                  <ButtonMenu
+                    style={transactionAction === 2 ? activeStyle : normalStyle}>
+                    Saída
+                  </ButtonMenu>
+                </TouchableHighlight>
+              </TransactionsMenu>
+              <TransactionItems>
+                {filteredTransactions && filteredTransactions.length > 0 ? (
+                  filteredTransactions.map((element, index) => (
+                    <TransactionItem key={index} style={borderStyle.border}>
+                      <TransactionIcon>
+                        {element.tipoTransacao === 'Pagamento' ? (
+                          <Image
+                            source={require('../../assets/pagamentos.png')}
+                          />
+                        ) : (
+                          <Image source={require('../../assets/recarga.png')} />
+                        )}
+                      </TransactionIcon>
+                      <TransactionTexts>
+                        <TransactionTitle>
+                          {element.tipoTransacao}
+                        </TransactionTitle>
+                        <TransactionDescription>
+                          {element.descricao}
+                        </TransactionDescription>
+                      </TransactionTexts>
 
-                    <TransactionNumbers>
-                      <TransactionValue
-                        style={
-                          element.tipoLancamento === 'C'
-                            ? positiveStyle
-                            : negativeStyle
-                        }>
-                        {currencyFormat(element.valorTransacao)}
-                      </TransactionValue>
-                      <TransactionDate>
-                        {dateFormat(element.dataTransacao)}
-                      </TransactionDate>
-                    </TransactionNumbers>
+                      <TransactionNumbers>
+                        <TransactionValue
+                          style={
+                            element.tipoLancamento === 'C'
+                              ? positiveStyle
+                              : negativeStyle
+                          }>
+                          {element.tipoLancamento === 'D' && '-'}R${' '}
+                          {currencyFormat(element.valorTransacao)}
+                        </TransactionValue>
+                        <TransactionDate>
+                          {dateFormat(element.dataTransacao)}
+                        </TransactionDate>
+                      </TransactionNumbers>
+                    </TransactionItem>
+                  ))
+                ) : (
+                  <TransactionItem>
+                    <TransactionTitle>
+                      Nenhuma transação encontrada
+                    </TransactionTitle>
                   </TransactionItem>
-                ))
-              ) : (
-                <TransactionItem>
-                  <TransactionTitle>
-                    Nenhuma transação encontrada
-                  </TransactionTitle>
-                </TransactionItem>
-              )}
-            </TransactionItems>
-          </TransactionsView>
+                )}
+              </TransactionItems>
+            </TransactionsView>
+          </ScrollViewArea>
         </>
       )}
     </Container>
